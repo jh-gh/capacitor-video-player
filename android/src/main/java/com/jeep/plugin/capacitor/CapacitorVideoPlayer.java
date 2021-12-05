@@ -51,10 +51,16 @@ public class CapacitorVideoPlayer extends Plugin {
         if (hasRequiredPermissions()) {
             isPermissionGranted = true;
         } else {
-            pluginRequestPermissions(
-                new String[] { Manifest.permission.INTERNET, Manifest.permission.READ_EXTERNAL_STORAGE },
-                REQUEST_VIDEO_PERMISSION
-            );
+            // Requesting the permissions below causes the user to get prompted to allow access to photos/media/files.
+            // If all you are doing is playing video from the internet or from local private app files this is not
+            // necessary so we comment it out here to avoid that prompt.
+            // Of course this will probably cause problems if your app does allow the use of the video player to
+            // access media on external storage ... but if it doesn't then this allows us to avoid that prompt.
+            //
+            // pluginRequestPermissions(
+            //     new String[] { Manifest.permission.INTERNET, Manifest.permission.READ_EXTERNAL_STORAGE },
+            //     REQUEST_VIDEO_PERMISSION
+            // );
             isPermissionGranted = true;
         }
 
